@@ -1,0 +1,8 @@
+name: Bingo
+version: ${project.version}
+main: com.luythen.github.bingo.Bingo
+api-version: 1.16
+authors: [ Luythen ]
+
+commands:
+  bingo:
