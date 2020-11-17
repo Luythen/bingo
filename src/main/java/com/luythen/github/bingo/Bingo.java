@@ -1,5 +1,6 @@
 package com.luythen.github.bingo;
 
+import com.luythen.github.bingo.event.OnCraftEvent;
 import com.luythen.github.bingo.random.Item;
 import com.luythen.github.bingo.random.random;
 import org.bukkit.Bukkit;
@@ -24,6 +25,7 @@ public final class Bingo extends JavaPlugin {
         // Plugin startup logic
         instance = this;
         new BingoCommand(this);
+        Bukkit.getPluginManager().registerEvents(new OnCraftEvent(), this);
 
         grid.loadgrid();
 
