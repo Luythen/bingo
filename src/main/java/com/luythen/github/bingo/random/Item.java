@@ -2,21 +2,23 @@ package com.luythen.github.bingo.random;
 
 import org.bukkit.inventory.ItemStack;
 
+import java.awt.image.BufferedImage;
+
 public class Item {
 
     private ItemStack itemStack;
-    private String url;
+    private BufferedImage image;
 
-    public Item (String url, ItemStack itemStack) {
+    public Item (BufferedImage image, ItemStack itemStack) {
         this.itemStack = itemStack;
-        this.url = url;
+        this.image = image;
     }
 
     public ItemStack getItemStack() {
         return itemStack;
     }
 
-    public String getUrl() {
-        return url;
+    public BufferedImage getImage() {
+        return image;
     }
 }

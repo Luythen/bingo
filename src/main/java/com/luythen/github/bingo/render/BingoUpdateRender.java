@@ -47,12 +47,7 @@ public class BingoUpdateRender extends MapRenderer {
 
         for (int i = 0; i < random.generateBingoItem(player).size(); i++) {
             int[] points = Bingo.getInstance().grid.getItemGridByIndex(i+1);
-            try {
-                BufferedImage image = ImageIO.read(new URL("https://static-cyan.vercel.app/block/"+ random.generateBingoItem(player).get(i).getUrl()));
-                canvas.drawImage(points[0], points[1], image);
-            } catch (IOException e) {
-                player.sendMessage(ChatColor.GREEN + "[bingo] " + ChatColor.RED + "Failed to load image");
-            }
+            canvas.drawImage(points[0], points[1], random.generateBingoItem(player).get(i).getImage());
         }
     }
 }
