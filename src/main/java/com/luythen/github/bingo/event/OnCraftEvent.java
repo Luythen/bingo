@@ -21,6 +21,11 @@ public class OnCraftEvent implements Listener {
     public void OnCraftEvent (CraftItemEvent e) {
         Player p = (Player) e.getWhoClicked();
 
+        if (!(e.getWhoClicked().getInventory().contains(new ItemStack(Material.FILLED_MAP)))) {
+            p.sendMessage(ChatColor.GREEN + "[bingo] " + ChatColor.RED + "You dont have a bingo map in your inventory!");
+            return;
+        }
+
         for (int i = 0; i < random.generateBingoItem(p).size(); i++) {
             if (e.getRecipe().getResult().equals(random.generateBingoItem(p).get(i).getItemStack())) {
                 int[] points = Bingo.getInstance().grid.getGridByIndex(i + 1);
@@ -40,6 +45,7 @@ public class OnCraftEvent implements Listener {
 
                 if (p.getInventory().getItemInOffHand().getType() == Material.FILLED_MAP) {
                     p.getInventory().getItemInOffHand().setItemMeta(mapMeta);
+                    break;
                 } else {
                     for (int x = 0; i < p.getInventory().getSize(); x++) {
                         if (p.getInventory().getItem(x).getType() == Material.FILLED_MAP) {
@@ -48,7 +54,6 @@ public class OnCraftEvent implements Listener {
                         }
                     }
                 }
-                break;
             }
         }
     }
