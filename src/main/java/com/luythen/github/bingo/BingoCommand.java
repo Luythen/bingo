@@ -53,7 +53,7 @@ public class BingoCommand implements CommandExecutor {
             map.setItemMeta(mapMeta);
 
             p.getInventory().setItem(0, map);
-        } else if (args[0].equalsIgnoreCase("set")) {
+        } else if (args[0].equalsIgnoreCase("set") && p.isOp()) {
             int[] points = Bingo.getInstance().grid.getGridByIndex(Integer.valueOf(args[1]));
 
             MapView mapView = Bukkit.createMap(p.getWorld());

@@ -22,7 +22,7 @@ public class OnCraftEvent implements Listener {
         Player p = (Player) e.getWhoClicked();
 
         for (int i = 0; i < random.generateBingoItem(p).size(); i++) {
-            if (random.generateBingoItem(p).get(i).getItemStack() == e.getRecipe().getResult()) {
+            if (e.getRecipe().getResult().equals(random.generateBingoItem(p).get(i).getItemStack())) {
                 int[] points = Bingo.getInstance().grid.getGridByIndex(i + 1);
 
                 MapView mapView = Bukkit.createMap(p.getWorld());
