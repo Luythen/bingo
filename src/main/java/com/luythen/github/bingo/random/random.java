@@ -20,7 +20,7 @@ public class random {
         if (playerlist.containsKey(p.getUniqueId()))
             playerlist.clear();
 
-        playerlist.put(p.getUniqueId(), new ArrayList<Item>());
+        playerlist.put(p.getUniqueId(), new ArrayList<>());
 
         while (playerlist.get(p.getUniqueId()).size() < 16) {
             Random random = new Random();

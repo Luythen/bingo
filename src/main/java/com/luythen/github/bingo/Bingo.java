@@ -19,6 +19,9 @@ public final class Bingo extends JavaPlugin {
     public static Bingo instance;
     public grid grid = new grid();
 
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+
     @Override
     public void onEnable() {
         ArrayList<Item> temp;
@@ -51,8 +54,9 @@ public final class Bingo extends JavaPlugin {
                     new Item(ImageIO.read(new URL("https://static-cyan.vercel.app/block/black_wool.png")), new ItemStack(Material.BLACK_WOOL))
             ));
             random.setList(temp);
+            System.out.println( ANSI_GREEN +"[bingo] Successfully loaded in image");
         } catch (IOException e) {
-            System.out.println("Failed to load images");
+            System.out.println( ANSI_RED+"[bingo] Failed to load images");
         }
     }
 
