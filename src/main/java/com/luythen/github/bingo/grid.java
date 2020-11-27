@@ -1,20 +1,16 @@
 package com.luythen.github.bingo;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import org.bukkit.entity.Player;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.UUID;
 
 public class grid {
 
-    private HashMap<Integer, int[]> grid = new HashMap<>();
-    private HashMap<Integer, int[]> itemgrid = new HashMap<>();
-    private static HashMap<UUID, ArrayList<int[]>> playergrid = new HashMap<>();
+    private final HashMap<Integer, int[]> grid = new HashMap<>();
+    private final HashMap<Integer, int[]> itemgrid = new HashMap<>();
+    private static final HashMap<UUID, ArrayList<int[]>> playergrid = new HashMap<>();
 
     public void loadgrid () {
 
