@@ -48,7 +48,7 @@ public class BingoCommand implements CommandExecutor {
             MapMeta mapMeta = (MapMeta) map.getItemMeta();
 
             mapMeta.setMapView(mapView);
-            mapMeta.setDisplayName(ChatColor.AQUA.BOLD + "Bingo");
+            mapMeta.setDisplayName(ChatColor.BOLD + "Bingo");
 
             map.setItemMeta(mapMeta);
 

@@ -34,7 +34,7 @@ public class OnCraftEvent implements Listener {
                 MapMeta mapMeta = (MapMeta) map.getItemMeta();
 
                 mapMeta.setMapView(mapView);
-                mapMeta.setDisplayName(ChatColor.BOLD.AQUA + "Bingo");
+                mapMeta.setDisplayName(ChatColor.BOLD + "Bingo");
 
                 map.setItemMeta(mapMeta);
 
