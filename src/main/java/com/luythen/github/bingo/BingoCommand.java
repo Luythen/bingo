@@ -48,7 +48,7 @@ public class BingoCommand implements CommandExecutor {
             MapMeta mapMeta = (MapMeta) map.getItemMeta();
 
             mapMeta.setMapView(mapView);
-            mapMeta.setDisplayName(ChatColor.BOLD + "Bingo");
+            mapMeta.setDisplayName(ChatColor.AQUA + "Bingo");
 
             map.setItemMeta(mapMeta);
 
@@ -65,7 +65,7 @@ public class BingoCommand implements CommandExecutor {
             MapMeta mapMeta = (MapMeta) map.getItemMeta();
 
             mapMeta.setMapView(mapView);
-            mapMeta.setDisplayName(ChatColor.BOLD.AQUA + "Bingo");
+            mapMeta.setDisplayName(ChatColor.AQUA + "Bingo");
 
             map.setItemMeta(mapMeta);
 
@@ -79,6 +79,8 @@ public class BingoCommand implements CommandExecutor {
                     }
                 }
             }
+        } else {
+            p.sendMessage("Hello");
         }
 
         return true;
