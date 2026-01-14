@@ -10,6 +10,8 @@ import org.bukkit.map.MapRenderer;
 import org.bukkit.map.MapView;
 
 import javax.imageio.ImageIO;
+
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
@@ -40,13 +42,13 @@ public class BingoUpdateRender extends MapRenderer {
         for (int[] value: getPlayergrid().get(player.getUniqueId())) {
             for (int x = value[0]; x < value[1]; x++) {
                 for (int y = value[2]; y < value[3]; y++) {
-                    canvas.setPixel(x, y, MapPalette.LIGHT_GREEN);
+                    canvas.setPixelColor(x, y, Color.GREEN);
                 }
             }
         }
 
         for (int i = 0; i < random.generateBingoItem(player).size(); i++) {
-            int[] points = Bingo.getInstance().grid.getItemGridByIndex(i+1);
+            int[] points = Bingo.getInstance().grid.getItemGridByIndex(i);
             canvas.drawImage(points[0], points[1], random.generateBingoItem(player).get(i).getImage());
         }
     }

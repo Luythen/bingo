@@ -18,7 +18,7 @@ import org.bukkit.map.MapView;
 public class OnCraftEvent implements Listener {
 
     @EventHandler
-    public void OnCraftEvent (CraftItemEvent e) {
+    public void onCraftEvent (CraftItemEvent e) {
         Player p = (Player) e.getWhoClicked();
 
         for (int i = 0; i < random.generateBingoItem(p).size(); i++) {

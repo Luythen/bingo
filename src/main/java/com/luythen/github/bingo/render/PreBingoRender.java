@@ -31,7 +31,7 @@ public class PreBingoRender extends MapRenderer {
         }
 
         for (int i = 0; i < random.generateBingoItem(player).size(); i++) {
-            int[] points = Bingo.getInstance().grid.getItemGridByIndex(i + 1);
+            int[] points = Bingo.getInstance().grid.getItemGridByIndex(i);
             canvas.drawImage(points[0], points[1], random.generateBingoItem(player).get(i).getImage());
         }
     }
