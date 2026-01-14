@@ -8,19 +8,16 @@ import com.luythen.github.bingo.random.Item;
 import com.luythen.github.bingo.random.random;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import javax.imageio.ImageIO;
-import javax.json.JsonObject;
 
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public final class Bingo extends JavaPlugin {
 

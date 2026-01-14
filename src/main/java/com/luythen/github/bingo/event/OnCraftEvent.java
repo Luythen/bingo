@@ -1,7 +1,6 @@
 package com.luythen.github.bingo.event;
 
 import com.luythen.github.bingo.Bingo;
-import com.luythen.github.bingo.random.Item;
 import com.luythen.github.bingo.random.random;
 import com.luythen.github.bingo.render.BingoUpdateRender;
 import org.bukkit.Bukkit;

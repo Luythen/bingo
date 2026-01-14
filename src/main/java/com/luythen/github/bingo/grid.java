@@ -2,16 +2,13 @@ package com.luythen.github.bingo;
 
 import org.bukkit.entity.Player;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.UUID;
 
 public class grid {
 
     private final HashMap<Integer, int[]> grid = new HashMap<>();
-    private final HashMap<Integer, int[]> itemgrid = new HashMap<>();
     private final ArrayList<int[]> iGrid = new ArrayList<>();
     private static final HashMap<UUID, ArrayList<int[]>> playergrid = new HashMap<>();
 
