@@ -4,7 +4,6 @@ import com.luythen.github.bingo.Bingo;
 import com.luythen.github.bingo.random.random;
 import org.bukkit.entity.Player;
 import org.bukkit.map.MapCanvas;
-import org.bukkit.map.MapPalette;
 import org.bukkit.map.MapRenderer;
 import org.bukkit.map.MapView;
 
@@ -23,14 +22,14 @@ public class BingoUpdateRender extends MapRenderer {
     public void render(MapView map, MapCanvas canvas, Player player) {
         for (int x = 0; x < 128; x++) {
             for (int y = 0; y < 128; y++) {
-                canvas.setPixel(x, y, MapPalette.WHITE);
-                canvas.setPixel(32, y, MapPalette.DARK_GRAY);
-                canvas.setPixel(64, y, MapPalette.DARK_GRAY);
-                canvas.setPixel(96, y, MapPalette.DARK_GRAY);
+                canvas.setPixelColor(x, y, Color.WHITE);
+                canvas.setPixelColor(32, y, Color.DARK_GRAY);
+                canvas.setPixelColor(64, y, Color.DARK_GRAY);
+                canvas.setPixelColor(96, y, Color.DARK_GRAY);
             }
-            canvas.setPixel(x, 32, MapPalette.DARK_GRAY);
-            canvas.setPixel(x, 64, MapPalette.DARK_GRAY);
-            canvas.setPixel(x, 96, MapPalette.DARK_GRAY);
+            canvas.setPixelColor(x, 32, Color.DARK_GRAY);
+            canvas.setPixelColor(x, 64, Color.DARK_GRAY);
+            canvas.setPixelColor(x, 96, Color.DARK_GRAY);
         }
 
         for (int[] value: getPlayergrid().get(player.getUniqueId())) {
