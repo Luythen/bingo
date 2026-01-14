@@ -1,0 +1,72 @@
+{
+    "blocks": [
+        {
+            "ItemType": "FURNACE",
+            "ItemImg": "Img/furnace.png"
+        },
+        {
+            "ItemType": "HAY_BLOCK",
+            "ItemImg": "Img/hay_block.png"
+        },
+        {
+            "ItemType": "IRON_BLOCK",
+            "ItemImg": "Img/iron_block.png"
+        },
+        {
+            "ItemType": "DIAMOND_BLOCK",
+            "ItemImg": "Img/diamond_block.png"
+        },
+        {
+            "ItemType": "GOLD_BLOCK",
+            "ItemImg": "Img/gold_block.png"
+        },
+        {
+            "ItemType": "EMERALD_BLOCK",
+            "ItemImg": "Img/emerald_block.png"
+        },
+        {
+            "ItemType": "LAPIS_BLOCK",
+            "ItemImg": "Img/lapis_block.png"
+        },
+        {
+            "ItemType": "REDSTONE_BLOCK",
+            "ItemImg": "Img/redstone_block.png"
+        },
+        {
+            "ItemType": "REDSTONE_LAMP",
+            "ItemImg": "Img/redstone_lamp.png"
+        },
+        {
+            "ItemType": "BRICKS",
+            "ItemImg": "Img/bricks.png"
+        },
+        {
+            "ItemType": "BARREL",
+            "ItemImg": "Img/barrel_side.png"
+        },
+        {
+            "ItemType": "BLUE_WOOL",
+            "ItemImg": "Img/blue_wool.png"
+        },
+        {
+            "ItemType": "YELLOW_WOOL",
+            "ItemImg": "Img/yellow_wool.png"
+        },
+        {
+            "ItemType": "CYAN_WOOL",
+            "ItemImg": "Img/cyan_wool.png"
+        },
+        {
+            "ItemType": "MAGENTA_WOOL",
+            "ItemImg": "Img/magenta_wool.png"
+        },
+        {
+            "ItemType": "LIME_WOOL",
+            "ItemImg": "Img/lime_wool.png"
+        },
+        {
+            "ItemType": "QUARTZ_PILLAR",
+            "ItemImg": "Img/quartz_pillar.png"
+        }
+    ]
+}

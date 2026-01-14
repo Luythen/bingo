@@ -2,15 +2,21 @@ package com.luythen.github.bingo;
 
 import org.bukkit.entity.Player;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 public class grid {
 
     private final HashMap<Integer, int[]> grid = new HashMap<>();
     private final HashMap<Integer, int[]> itemgrid = new HashMap<>();
+    private final ArrayList<int[]> iGrid = new ArrayList<>();
     private static final HashMap<UUID, ArrayList<int[]>> playergrid = new HashMap<>();
+
+    private int itemGridX = 8;
+    private int itemGirdY = 8;
 
     public void loadgrid () {
 
@@ -31,23 +37,14 @@ public class grid {
         grid.put(15, new int[]{65, 96, 97, 128});
         grid.put(16, new int[]{97, 128, 97, 128});
 
-        itemgrid.put(1, new int[]{8, 8});
-        itemgrid.put(2, new int[]{41, 8});
-        itemgrid.put(3, new int[]{72, 8});
-        itemgrid.put(4, new int[]{104, 8});
-        itemgrid.put(5, new int[]{8, 41});
-        itemgrid.put(6, new int[]{41, 41});
-        itemgrid.put(7, new int[]{72, 41});
-        itemgrid.put(8, new int[]{104, 41});
-        itemgrid.put(9, new int[]{8, 72});
-        itemgrid.put(10, new int[]{41, 72});
-        itemgrid.put(11, new int[]{72, 72});
-        itemgrid.put(12, new int[]{104, 72});
-        itemgrid.put(13, new int[]{8, 104});
-        itemgrid.put(14, new int[]{41, 104});
-        itemgrid.put(15, new int[]{72, 104});
-        itemgrid.put(16, new int[]{104, 104});
-
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                iGrid.add(new int[]{itemGridX, itemGirdY});
+                itemGridX+= 32;
+            }
+            itemGridX = 8;
+            itemGirdY+= 32;
+        }
     }
 
     public int[] getGridByIndex (int index) {
@@ -55,7 +52,7 @@ public class grid {
     }
 
     public int[] getItemGridByIndex (int index) {
-        return itemgrid.get(index);
+        return iGrid.get(index);
     }
 
     public static void UpdatePlayerGrid (int[] grid, Player p) {
