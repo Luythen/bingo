@@ -3,6 +3,9 @@ package com.luythen.github.bingo;
 import com.luythen.github.bingo.random.random;
 import com.luythen.github.bingo.render.BingoUpdateRender;
 import com.luythen.github.bingo.render.PreBingoRender;
+
+import java.awt.Color;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -49,12 +52,13 @@ public class BingoCommand implements CommandExecutor {
 
             p.getInventory().setItem(0, map);
         } else if (args[0].equalsIgnoreCase("set") && p.isOp()) {
-            int[] points = Bingo.getInstance().grid.getGridByIndex(Integer.valueOf(args[1]));
+            GridItem gridItem = random.generateBingoGridItem(p).get(Integer.parseInt(args[1]));
+            gridItem.setGridColor(Color.GREEN);
 
             MapView mapView = Bukkit.createMap(p.getWorld());
             mapView.getRenderers().clear();
             mapView.setTrackingPosition(false);
-            mapView.addRenderer(new BingoUpdateRender(points, p));
+            mapView.addRenderer(new BingoUpdateRender());
 
             ItemStack map = new ItemStack(Material.FILLED_MAP);
             MapMeta mapMeta = (MapMeta) map.getItemMeta();

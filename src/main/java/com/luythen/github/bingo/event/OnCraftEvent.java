@@ -1,8 +1,11 @@
 package com.luythen.github.bingo.event;
 
-import com.luythen.github.bingo.Bingo;
+import com.luythen.github.bingo.GridItem;
 import com.luythen.github.bingo.random.random;
 import com.luythen.github.bingo.render.BingoUpdateRender;
+
+import java.awt.Color;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -20,14 +23,15 @@ public class OnCraftEvent implements Listener {
     public void onCraftEvent (CraftItemEvent e) {
         Player p = (Player) e.getWhoClicked();
 
-        for (int i = 0; i < random.generateBingoItem(p).size(); i++) {
-            if (e.getRecipe().getResult().equals(random.generateBingoItem(p).get(i).getItemStack())) {
-                int[] points = Bingo.getInstance().grid.getGridByIndex(i + 1);
+        for (int i = 0; i < random.generateBingoGridItem(p).size(); i++) {
+            if (e.getRecipe().getResult().equals(random.generateBingoGridItem(p).get(i).getItem().getItemStack())) {
+                GridItem gridItem = random.generateBingoGridItem(p).get(i);
+                gridItem.setGridColor(Color.GREEN);
 
                 MapView mapView = Bukkit.createMap(p.getWorld());
                 mapView.getRenderers().clear();
                 mapView.setTrackingPosition(false);
-                mapView.addRenderer(new BingoUpdateRender(points, p));
+                mapView.addRenderer(new BingoUpdateRender());
 
                 ItemStack map = new ItemStack(Material.FILLED_MAP);
                 MapMeta mapMeta = (MapMeta) map.getItemMeta();
