@@ -22,7 +22,6 @@ import java.util.ArrayList;
 public final class Bingo extends JavaPlugin {
 
     public static Bingo instance;
-    public grid grid = new grid();
 
     private String url = "https://raw.githubusercontent.com/Luythen/bingoImg/refs/heads/main/";
     private File configFile;
@@ -38,7 +37,6 @@ public final class Bingo extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new OnCraftEvent(), this);
 
         createCustomConfig();
-        grid.loadgrid();
 
         try {
             long startTime = System.nanoTime();
