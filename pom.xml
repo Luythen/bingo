@@ -6,7 +6,7 @@
 
     <groupId>com.Luythen.github</groupId>
     <artifactId>Bingo</artifactId>
-    <version>${git.commit.id.abbrev}</version>
+    <version>0.0.1</version>
     <packaging>jar</packaging>
 
     <name>Bingo</name>
