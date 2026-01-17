@@ -2,7 +2,7 @@ package com.luythen.github.bingo.event;
 
 import com.luythen.github.bingo.GridItem;
 import com.luythen.github.bingo.random.random;
-import com.luythen.github.bingo.render.BingoUpdateRender;
+import com.luythen.github.bingo.render.BingoRender;
 
 import java.awt.Color;
 
@@ -17,10 +17,10 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.MapMeta;
 import org.bukkit.map.MapView;
 
-public class OnCraftEvent implements Listener {
+public class onCraftEvent implements Listener {
 
     @EventHandler
-    public void onCraftEvent (CraftItemEvent e) {
+    public void event (CraftItemEvent e) {
         Player p = (Player) e.getWhoClicked();
 
         for (int i = 0; i < random.generateBingoGridItem(p).size(); i++) {
@@ -31,7 +31,7 @@ public class OnCraftEvent implements Listener {
                 MapView mapView = Bukkit.createMap(p.getWorld());
                 mapView.getRenderers().clear();
                 mapView.setTrackingPosition(false);
-                mapView.addRenderer(new BingoUpdateRender());
+                mapView.addRenderer(new BingoRender());
 
                 ItemStack map = new ItemStack(Material.FILLED_MAP);
                 MapMeta mapMeta = (MapMeta) map.getItemMeta();

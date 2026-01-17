@@ -1,4 +1,4 @@
-package com.luythen.github.bingo.Dto;
+package com.luythen.github.bingo.dto;
 
 import java.util.ArrayList;
 

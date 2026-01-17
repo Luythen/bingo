@@ -3,7 +3,8 @@ package com.luythen.github.bingo;
 import com.google.gson.Gson;
 import com.luythen.github.bingo.Dto.BlocksDto;
 import com.luythen.github.bingo.Dto.ItemDto;
-import com.luythen.github.bingo.event.OnCraftEvent;
+import com.luythen.github.bingo.event.onCraftEvent;
+import com.luythen.github.bingo.event.onDropEvent;
 import com.luythen.github.bingo.random.Item;
 import com.luythen.github.bingo.random.random;
 import org.bukkit.Bukkit;
@@ -34,7 +35,8 @@ public final class Bingo extends JavaPlugin {
         // Plugin startup logic
         instance = this;
         new BingoCommand(this);
-        Bukkit.getPluginManager().registerEvents(new OnCraftEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new onCraftEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new onDropEvent(), this);
 
         createCustomConfig();
 

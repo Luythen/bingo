@@ -2,15 +2,16 @@ package com.luythen.github.bingo.render;
 
 import com.luythen.github.bingo.GridItem;
 import com.luythen.github.bingo.random.random;
+
+import java.awt.Color;
+
 import org.bukkit.entity.Player;
 import org.bukkit.map.MapCanvas;
 import org.bukkit.map.MapRenderer;
 import org.bukkit.map.MapView;
 
-import java.awt.Color;
 
-public class BingoUpdateRender extends MapRenderer {
-
+public class BingoRender extends MapRenderer {
     @Override
     public void render(MapView map, MapCanvas canvas, Player player) {
 
