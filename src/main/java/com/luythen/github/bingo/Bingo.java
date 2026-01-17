@@ -1,8 +1,8 @@
 package com.luythen.github.bingo;
 
 import com.google.gson.Gson;
-import com.luythen.github.bingo.Dto.BlocksDto;
-import com.luythen.github.bingo.Dto.ItemDto;
+import com.luythen.github.bingo.dto.BlocksDto;
+import com.luythen.github.bingo.dto.ItemDto;
 import com.luythen.github.bingo.event.onCraftEvent;
 import com.luythen.github.bingo.event.onDropEvent;
 import com.luythen.github.bingo.random.Item;
