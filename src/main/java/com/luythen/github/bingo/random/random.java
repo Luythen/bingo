@@ -13,21 +13,22 @@ public class random {
 
     private static HashMap<UUID, ArrayList<GridItem>> playerlist = new HashMap<>();
 
-    private static int itemGridX = 8;
-    private static int itemGirdY = 8;
-
-    private static int[] gridPointA = new int[]{0, 32, 64, 96};
-    private static int gridPointB = 32;
-    private static int girdPointC = 0;
-    private static int gridPointD = 32;
-
     public static ArrayList<GridItem> generateBingoGridItem (Player p) {
         return playerlist.get(p.getUniqueId());
     }
 
     public static void generate (Player p) {
-        if (playerlist.containsKey(p.getUniqueId()))
-            playerlist.clear();
+        if (playerlist.containsKey(p.getUniqueId())) {
+            playerlist.remove(p.getUniqueId());
+        }
+
+        int itemGridX = 8;
+        int itemGirdY = 8;
+
+        int[] gridPointA = new int[]{0, 32, 64, 96};
+        int gridPointB = 32;
+        int girdPointC = 0;
+        int gridPointD = 32;
 
         playerlist.put(p.getUniqueId(), new ArrayList<>());
         Random random = new Random();
@@ -55,7 +56,7 @@ public class random {
         }
     }
 
-    private static boolean containsItem (Player p,Item item) {
+    private static boolean containsItem (Player p, Item item) {
         for (GridItem gItem : playerlist.get(p.getUniqueId())) {
             if (gItem.getItem().equals(item)) {
                 return true;

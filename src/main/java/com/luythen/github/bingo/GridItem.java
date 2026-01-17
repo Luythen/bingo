@@ -1,12 +1,15 @@
 package com.luythen.github.bingo;
 
 import java.awt.Color;
+import java.util.UUID;
 
 import org.bukkit.map.MapCanvas;
 
 import com.luythen.github.bingo.random.Item;
 
 public class GridItem {
+
+    private UUID uuid;
 
     private Color gridColor;
     private Item item;
@@ -19,6 +22,7 @@ public class GridItem {
         this.item = item;
         this.gridAxis = gridAxis;
         this.gridItemAxis = gridItemAxis;
+        this.uuid = UUID.randomUUID();
     }
 
     public void drawGrid (MapCanvas canvas) {
@@ -51,6 +55,8 @@ public class GridItem {
         return gridItemAxis;
     }
 
-    
+    public UUID getUuid () {
+        return uuid;
+    }
 
 }

@@ -1,8 +1,7 @@
 package com.luythen.github.bingo;
 
 import com.luythen.github.bingo.random.random;
-import com.luythen.github.bingo.render.BingoUpdateRender;
-import com.luythen.github.bingo.render.PreBingoRender;
+import com.luythen.github.bingo.render.BingoRender;
 
 import java.awt.Color;
 
@@ -40,7 +39,7 @@ public class BingoCommand implements CommandExecutor {
             MapView mapView = Bukkit.createMap(p.getWorld());
             mapView.getRenderers().clear();
             mapView.setTrackingPosition(false);
-            mapView.addRenderer(new PreBingoRender());
+            mapView.addRenderer(new BingoRender());
 
             ItemStack map = new ItemStack(Material.FILLED_MAP);
             MapMeta mapMeta = (MapMeta) map.getItemMeta();
@@ -58,7 +57,11 @@ public class BingoCommand implements CommandExecutor {
             MapView mapView = Bukkit.createMap(p.getWorld());
             mapView.getRenderers().clear();
             mapView.setTrackingPosition(false);
-            mapView.addRenderer(new BingoUpdateRender());
+            try {
+                mapView.addRenderer(new BingoRender());
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
 
             ItemStack map = new ItemStack(Material.FILLED_MAP);
             MapMeta mapMeta = (MapMeta) map.getItemMeta();
