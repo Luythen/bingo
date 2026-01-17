@@ -26,15 +26,15 @@ public class GridItem {
     public void drawGrid (MapCanvas canvas) {
         for (int x = gridAxis[0]; x < gridAxis[1]; x++) {
             for (int y = gridAxis[2]; y < gridAxis[3]; y++) {
-                canvas.setPixelColor(x, y, isCompleted());
+                canvas.setPixelColor(x, y, isCompleted() ? Color.GREEN : Color.WHITE);
             }
         }
 
         canvas.drawImage(gridItemAxis[0], gridItemAxis[1], getItem().getImage());
     }
 
-    public Color isCompleted() {
-        return isCompleted ? Color.GREEN : Color.WHITE;
+    public boolean isCompleted() {
+        return isCompleted;
     }
 
     public void setIsCompleted(boolean isCompleted) {

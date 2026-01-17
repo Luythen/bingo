@@ -33,7 +33,7 @@ public class BingoCommand implements CommandExecutor {
             } catch (NumberFormatException e) {
                 p.sendMessage("Bingo >> you must specify match size");
             }
-        } else if (args[0].equalsIgnoreCase("join") && p.isOp()) {
+        } else if (args[0].equalsIgnoreCase("join")) {
             try {
                 UUID matchID = UUID.fromString(args[1]);
                 Game.JoinBingoMatch(matchID, p);

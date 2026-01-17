@@ -77,11 +77,10 @@ public class BingoMatch {
     }
 
     private void createBingoMapsForMatchPlayers () {
-        MapView mapView = Bukkit.createMap(Bukkit.getWorld("world"));
-        mapView.getRenderers().clear();
-        mapView.setTrackingPosition(false);
-
         for (BingoPlayer bingoPlayer : getMatchPlayers()) {
+            MapView mapView = Bukkit.createMap(bingoPlayer.getPlayer().getWorld());
+            mapView.getRenderers().clear();
+            mapView.setTrackingPosition(false);
             mapView.addRenderer(new BingoRender(bingoPlayer));
             ItemStack map = new ItemStack(Material.FILLED_MAP);
             MapMeta mapMeta = (MapMeta) map.getItemMeta();
