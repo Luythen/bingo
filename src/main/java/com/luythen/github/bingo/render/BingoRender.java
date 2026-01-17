@@ -1,7 +1,7 @@
 package com.luythen.github.bingo.render;
 
-import com.luythen.github.bingo.GridItem;
-import com.luythen.github.bingo.random.random;
+import com.luythen.github.bingo.game.BingoPlayer;
+import com.luythen.github.bingo.game.GridItem;
 
 import java.awt.Color;
 
@@ -12,10 +12,17 @@ import org.bukkit.map.MapView;
 
 
 public class BingoRender extends MapRenderer {
+
+    private BingoPlayer bplayer;
+
+    public BingoRender (BingoPlayer bplayer) {
+        this.bplayer = bplayer;
+    }
+
     @Override
     public void render(MapView map, MapCanvas canvas, Player player) {
 
-        for (GridItem gridItem: random.generateBingoGridItem(player)) {
+        for (GridItem gridItem: bplayer.getGridItems()) {
             gridItem.drawGrid(canvas);
         }
 

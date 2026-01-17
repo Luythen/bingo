@@ -1,24 +1,22 @@
-package com.luythen.github.bingo;
+package com.luythen.github.bingo.game;
 
 import java.awt.Color;
 import java.util.UUID;
 
 import org.bukkit.map.MapCanvas;
 
-import com.luythen.github.bingo.random.Item;
-
 public class GridItem {
 
     private UUID uuid;
 
-    private Color gridColor;
+    private boolean isCompleted;
     private Item item;
 
     private int[] gridAxis;
     private int[] gridItemAxis;
 
-    public GridItem (Color gridColor, Item item, int[] gridAxis, int[] gridItemAxis) {
-        this.gridColor = gridColor;
+    public GridItem (Item item, int[] gridAxis, int[] gridItemAxis) {
+        this.isCompleted = false;
         this.item = item;
         this.gridAxis = gridAxis;
         this.gridItemAxis = gridItemAxis;
@@ -28,19 +26,19 @@ public class GridItem {
     public void drawGrid (MapCanvas canvas) {
         for (int x = gridAxis[0]; x < gridAxis[1]; x++) {
             for (int y = gridAxis[2]; y < gridAxis[3]; y++) {
-                canvas.setPixelColor(x, y, gridColor);
+                canvas.setPixelColor(x, y, isCompleted());
             }
         }
 
         canvas.drawImage(gridItemAxis[0], gridItemAxis[1], getItem().getImage());
     }
 
-    public Color getGridColor() {
-        return gridColor;
+    public Color isCompleted() {
+        return isCompleted ? Color.GREEN : Color.WHITE;
     }
 
-    public void setGridColor(Color gridColor) {
-        this.gridColor = gridColor;
+    public void setIsCompleted(boolean isCompleted) {
+        this.isCompleted = isCompleted;
     }
     
     public Item getItem() {
