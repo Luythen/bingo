@@ -1,20 +1,13 @@
 package com.luythen.github.bingo;
 
-import com.luythen.github.bingo.random.random;
-import com.luythen.github.bingo.render.BingoRender;
+import com.luythen.github.bingo.game.Game;
 
-import java.awt.Color;
+import java.util.UUID;
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.MapMeta;
-import org.bukkit.map.MapView;
 
 public class BingoCommand implements CommandExecutor {
 
@@ -33,53 +26,19 @@ public class BingoCommand implements CommandExecutor {
 
         Player p = (Player) sender;
 
-        if (args[0].equalsIgnoreCase("map")) {
-            random.generate(p);
-
-            MapView mapView = Bukkit.createMap(p.getWorld());
-            mapView.getRenderers().clear();
-            mapView.setTrackingPosition(false);
-            mapView.addRenderer(new BingoRender());
-
-            ItemStack map = new ItemStack(Material.FILLED_MAP);
-            MapMeta mapMeta = (MapMeta) map.getItemMeta();
-
-            mapMeta.setMapView(mapView);
-            mapMeta.setDisplayName(ChatColor.AQUA + "Bingo");
-
-            map.setItemMeta(mapMeta);
-
-            p.getInventory().setItem(0, map);
-        } else if (args[0].equalsIgnoreCase("set") && p.isOp()) {
-            GridItem gridItem = random.generateBingoGridItem(p).get(Integer.parseInt(args[1]));
-            gridItem.setGridColor(Color.GREEN);
-
-            MapView mapView = Bukkit.createMap(p.getWorld());
-            mapView.getRenderers().clear();
-            mapView.setTrackingPosition(false);
+        if (args[0].equalsIgnoreCase("create") && p.isOp()) {
             try {
-                mapView.addRenderer(new BingoRender());
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
+                int matchPlayerSize = Integer.parseInt(args[1]);
+                Game.createNewBingoMatch(matchPlayerSize);
+            } catch (NumberFormatException e) {
+                p.sendMessage("Bingo >> you must specify match size");
             }
-
-            ItemStack map = new ItemStack(Material.FILLED_MAP);
-            MapMeta mapMeta = (MapMeta) map.getItemMeta();
-
-            mapMeta.setMapView(mapView);
-            mapMeta.setDisplayName(ChatColor.AQUA + "Bingo");
-
-            map.setItemMeta(mapMeta);
-
-            if (p.getInventory().getItemInOffHand().getType() == Material.FILLED_MAP) {
-                p.getInventory().getItemInOffHand().setItemMeta(mapMeta);
-            } else {
-                for (int i = 0; i < p.getInventory().getSize(); i++) {
-                    if (p.getInventory().getItem(i).getType() == Material.FILLED_MAP) {
-                        p.getInventory().setItem(i, map);
-                        break;
-                    }
-                }
+        } else if (args[0].equalsIgnoreCase("join") && p.isOp()) {
+            try {
+                UUID matchID = UUID.fromString(args[1]);
+                Game.JoinBingoMatch(matchID, p);
+            } catch (Exception e) {
+                p.sendMessage("Bingo >> match dosen't exits");
             }
         } else {
             p.sendMessage("Hello");

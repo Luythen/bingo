@@ -1,10 +1,12 @@
 package com.luythen.github.bingo.event;
 
-import com.luythen.github.bingo.GridItem;
-import com.luythen.github.bingo.random.random;
+import com.luythen.github.bingo.game.BingoMatch;
+import com.luythen.github.bingo.game.BingoPlayer;
+import com.luythen.github.bingo.game.Game;
+import com.luythen.github.bingo.game.GridItem;
 import com.luythen.github.bingo.render.BingoRender;
 
-import java.awt.Color;
+import java.util.ArrayList;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -23,36 +25,52 @@ public class onCraftEvent implements Listener {
     public void event (CraftItemEvent e) {
         Player p = (Player) e.getWhoClicked();
 
-        for (int i = 0; i < random.generateBingoGridItem(p).size(); i++) {
-            if (e.getRecipe().getResult().equals(random.generateBingoGridItem(p).get(i).getItem().getItemStack())) {
-                GridItem gridItem = random.generateBingoGridItem(p).get(i);
-                gridItem.setGridColor(Color.GREEN);
+        ArrayList<BingoMatch> bingoMatchs = Game.getAllActiveMatches();
 
-                MapView mapView = Bukkit.createMap(p.getWorld());
-                mapView.getRenderers().clear();
-                mapView.setTrackingPosition(false);
-                mapView.addRenderer(new BingoRender());
+        try {
+            for (BingoMatch bingoMatch : bingoMatchs) {
+                if (bingoMatch.isMatchIsStarted()) {
 
-                ItemStack map = new ItemStack(Material.FILLED_MAP);
-                MapMeta mapMeta = (MapMeta) map.getItemMeta();
+                    BingoPlayer bingoPlayer = bingoMatch.getBingoPlayerByID(p.getUniqueId());
+                    ArrayList<GridItem> gridItemsList = bingoPlayer.getGridItems();
 
-                mapMeta.setMapView(mapView);
-                mapMeta.setDisplayName(ChatColor.BOLD + "Bingo");
+                    for (int i = 0; i < gridItemsList.size(); i++) {
+                        if (e.getRecipe().getResult().equals(gridItemsList.get(i).getItem().getItemStack())) {
+                            System.out.println(e.getRecipe().getResult().equals(gridItemsList.get(i).getItem().getItemStack()));
+                            GridItem gridItem = gridItemsList.get(i);
+                            gridItem.setIsCompleted(true);
 
-                map.setItemMeta(mapMeta);
+                            MapView mapView = Bukkit.createMap(p.getWorld());
+                            mapView.getRenderers().clear();
+                            mapView.setTrackingPosition(false);
+                            mapView.addRenderer(new BingoRender(bingoPlayer));
 
-                if (p.getInventory().getItemInOffHand().getType() == Material.FILLED_MAP) {
-                    p.getInventory().getItemInOffHand().setItemMeta(mapMeta);
-                    break;
-                } else {
-                    for (int x = 0; i < p.getInventory().getSize(); x++) {
-                        if (p.getInventory().getItem(x).getType() == Material.FILLED_MAP) {
-                            p.getInventory().setItem(x, map);
-                            break;
+                            ItemStack map = new ItemStack(Material.FILLED_MAP);
+                            MapMeta mapMeta = (MapMeta) map.getItemMeta();
+
+                            mapMeta.setMapView(mapView);
+                            mapMeta.setDisplayName(ChatColor.BOLD + "Bingo");
+
+                            map.setItemMeta(mapMeta);
+
+                            if (p.getInventory().getItemInOffHand().getType() == Material.FILLED_MAP) {
+                                p.getInventory().getItemInOffHand().setItemMeta(mapMeta);
+                                break;
+                            } else {
+                                for (int x = 0; i < p.getInventory().getSize(); x++) {
+                                    if (p.getInventory().getItem(x).getType() == Material.FILLED_MAP) {
+                                        p.getInventory().setItem(x, map);
+                                        break;
+                                    }
+                                }
+                            }
                         }
                     }
                 }
             }
+        } catch (Exception exe) {
+            System.out.print(Game.getAllActiveMatches().size());
+            System.out.println(exe.getMessage());
         }
     }
 

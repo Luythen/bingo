@@ -5,8 +5,9 @@ import com.luythen.github.bingo.dto.BlocksDto;
 import com.luythen.github.bingo.dto.ItemDto;
 import com.luythen.github.bingo.event.onCraftEvent;
 import com.luythen.github.bingo.event.onDropEvent;
-import com.luythen.github.bingo.random.Item;
-import com.luythen.github.bingo.random.random;
+import com.luythen.github.bingo.game.Game;
+import com.luythen.github.bingo.game.Item;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -47,7 +48,7 @@ public final class Bingo extends JavaPlugin {
             for (ItemDto item : json.getBlocks()) {
                 temp.add(new Item(ImageIO.read(new URL(url + "" + item.getItemImg())), new ItemStack(Material.getMaterial(item.getItemType()))));
             }
-            random.setList(temp);
+            Game.setBingoItems(temp);
 
             long elapsedTime = System.nanoTime() - startTime;
 

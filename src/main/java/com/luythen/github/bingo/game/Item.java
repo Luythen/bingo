@@ -1,4 +1,4 @@
-package com.luythen.github.bingo.random;
+package com.luythen.github.bingo.game;
 
 import org.bukkit.inventory.ItemStack;
 
